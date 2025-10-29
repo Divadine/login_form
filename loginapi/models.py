@@ -23,3 +23,14 @@ class UserRegister(models.Model):
 
     def __str__(self):
         return self.username
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(UserRegister,on_delete=models.CASCADE,related_name='profile')
+    firstname = models.CharField(max_length=50)
+    lastname = models.CharField(max_length=50)
+    phonenumber = models.CharField(max_length=15)
+    dob = models.DateField()
+
+    def __str__(self):
+        return f"{self.firstname} {self.lastname}"
